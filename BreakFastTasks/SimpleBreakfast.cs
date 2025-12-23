@@ -22,8 +22,7 @@ namespace CoreCollectionsAsync
             startTime = DateTime.Now;
             Console.WriteLine($"Start preparing the Omlette at {startTime.ToString()}");
             Omlette myOmlette = new Omlette("myOmlette");
-            myOmlette.OnProgressUpdate += Progress;
-            myOmlette.OnFinish += Finish;
+            
             myOmlette.Start();
 
             //Prepare toast
@@ -31,8 +30,7 @@ namespace CoreCollectionsAsync
             Console.WriteLine($"Start preparing the toast at {startTime.ToString()}");
 
             Toast toast = new Toast("toast");
-            toast.OnProgressUpdate += Progress;
-            toast.OnFinish += Finish;
+            
             toast.Start();
 
             //Prepare first cucumbers
@@ -40,8 +38,7 @@ namespace CoreCollectionsAsync
             Console.WriteLine($"Start preparing the first cucumber at {startTime.ToString()}");
 
             Cucumber cucumber1 = new Cucumber("first cucumber");
-            cucumber1.OnProgressUpdate += Progress;
-            cucumber1.OnFinish += Finish;
+            
             cucumber1.Start();
 
             //Prepare second cucumbers
@@ -49,17 +46,16 @@ namespace CoreCollectionsAsync
             Console.WriteLine($"Start preparing the second cucumber at {startTime.ToString()}");
 
             Cucumber cucumber2 = new Cucumber("second cucumber");
-            cucumber2.OnProgressUpdate += Progress;
-            cucumber2.OnFinish += Finish;
+            
             cucumber2.Start();
 
             //Prepare tomato
             startTime = DateTime.Now;
             Console.WriteLine($"Start preparing the tomato at {startTime.ToString()}");
             Tomato tomato = new Tomato("tomato");
-            tomato.OnProgressUpdate += Progress;
+            
             Console.WriteLine();
-            tomato.OnFinish += Finish;
+            
             tomato.Start();
 
             stopWatch.Stop();

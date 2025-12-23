@@ -17,15 +17,7 @@ namespace BreakFastTasks
         public string Name { get { return this.name; } }
         #endregion
 
-        #region אירועים
-       //אירוע בתהליך - עדכון קצב התקדמות
-       //המידע שיועבר בזמן ביצוע האירוע - מה אחוז ההתקדמות
-        public event EventHandler<int> OnProgressUpdate;
-
-        //אירוע סיום ביצוע- בסיום 
-        //אין מידע נוסך שישמר על האירוע
-        public event EventHandler OnFinish;
-        #endregion
+       
 
         //בנאי
         public TaskExecutor(string name, int ms)
@@ -44,19 +36,7 @@ namespace BreakFastTasks
             {
                 Thread.Sleep(this.timeInMiliSec / 10);
 
-                #region מימוש אופציונלי
-                //if (OnProgressUpdate != null)
-                //    OnProgressUpdate(this, (i+1) * 10);
-                #endregion
-
-                OnProgressUpdate?.Invoke(this, i  * 10);
             }
-
-            #region מימוש אופציונלי
-            //if (OnFinish != null)
-            //    OnFinish(this,new EventArgs());
-            #endregion
-            OnFinish?.Invoke(this, new EventArgs());
            
         }
 
@@ -65,7 +45,7 @@ namespace BreakFastTasks
 
     class Omlette : TaskExecutor
     {
-        public Omlette(string name) : base(name, 30000)
+        public Omlette(string name) : base(name, 7000)
         {
 
         }
@@ -85,7 +65,7 @@ namespace BreakFastTasks
 
     class Toast : TaskExecutor
     {
-        public Toast(string name) : base(name, 30000)
+        public Toast(string name) : base(name, 7000)
         {
 
         }
