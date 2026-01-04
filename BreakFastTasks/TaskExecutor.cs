@@ -17,6 +17,7 @@ namespace BreakFastTasks
         public string Name { get { return this.name; } }
         #endregion
 
+        public event EventHandler<int> OnProgress;
        
 
         //בנאי
@@ -34,18 +35,32 @@ namespace BreakFastTasks
         {
             for (int i = 1; i <= 10; i++)
             {
+                
                 Thread.Sleep(this.timeInMiliSec / 10);
+                if (OnProgress != null)
+                    OnProgress(this, i * 10);
 
             }
            
         }
+        public async Task StartAsync()
+        {
+         
+                for (int i = 1; i <= 10; i++)
+                {
+                   await Task.Delay(this.timeInMiliSec/10);
+                    if (OnProgress != null)
+                        OnProgress(this, i * 10);
+                }
+           
+		}
 
 
-    }
+	}
 
     class Omlette : TaskExecutor
     {
-        public Omlette(string name) : base(name, 7000)
+        public Omlette(string name) : base(name, 10000)
         {
 
         }
@@ -65,7 +80,7 @@ namespace BreakFastTasks
 
     class Toast : TaskExecutor
     {
-        public Toast(string name) : base(name, 7000)
+        public Toast(string name) : base(name, 6000)
         {
 
         }
